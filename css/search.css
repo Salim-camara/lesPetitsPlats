@@ -1,0 +1,30 @@
+.search {
+    margin: 30px 0 30px 0;
+}
+
+.searchRecetteContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.inputRecette {
+    height: 55px;
+    width: 80%;
+    background-color: #E6E6E6FF;
+    border: none;
+    border-radius: 5px;
+}
+
+.inputRecette::placeholder {
+    opacity: 0.7;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 13px;
+    right: 11%;
+    height: 30px;
+}
+
+

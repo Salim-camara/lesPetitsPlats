@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 50px 0;
+}
+
+main {
+    width: 100%;
+}
+
+.logoImg {
+    width: 300px;
+}
