@@ -2,6 +2,8 @@
     margin: 30px 0 30px 0;
 }
 
+
+/* SEARCH BY RECIPE */
 .searchRecetteContainer {
     position: relative;
     display: flex;
@@ -28,3 +30,46 @@
 }
 
 
+/* SEARCH BY CATEGORIES */
+.searchByCategoriesContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.iconArrowSearch {
+    height: 30px;
+
+}
+
+/* search by ingredients */
+.searchByIngredients {
+    width: 100%;
+}
+
+.searchByIngredientsTyping {
+    position: relative;
+    width: 100%;
+}
+
+.iconIngredientContainer {
+    position: absolute;
+}
+
+.searchByIngredientsInput {
+    background-color: #3282F7FF;
+    border: none;
+    border-radius: 5px;
+    height: 55px;
+}
+
+.searchByIngredientsInput::placeholder {
+    color: white;
+    font-weight: 500;
+}
+
+.searchByIngredientsResult {
+    background-color: #3282F7FF;
+
+}
