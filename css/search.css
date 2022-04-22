@@ -40,6 +40,7 @@
 
 .iconArrowSearch {
     height: 30px;
+    color: white;
 
 }
 
@@ -50,11 +51,13 @@
 
 .searchByIngredientsTyping {
     position: relative;
-    width: 100%;
+    width: fit-content;
 }
 
 .iconIngredientContainer {
     position: absolute;
+    right: 8px;
+    top: 12px;
 }
 
 .searchByIngredientsInput {
