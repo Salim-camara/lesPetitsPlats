@@ -46,7 +46,14 @@
 
 /* search by ingredients */
 .searchByIngredients {
-    width: 100%;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    min-width: 200px;
+    overflow: hidden;
+    background-color: #3282F7FF;
+    border-radius: 5px;
 }
 
 .searchByIngredientsTyping {
@@ -61,10 +68,10 @@
 }
 
 .searchByIngredientsInput {
-    background-color: #3282F7FF;
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
     height: 55px;
+    width: 200px;
     min-width: 200px;
     max-width: 350px;
 }
@@ -75,6 +82,20 @@
 }
 
 .searchByIngredientsResult {
-    background-color: #3282F7FF;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 300px;
+    overflow: auto;
+    min-width: 200px;
+    background-color: transparent;
 
+}
+
+.ingredientContainer {
+    /* display: flex; */
+    color: white;
+    width: 100px;
+    margin: 10px 10px 10px 10px;
+    font-size: 14px;
 }
