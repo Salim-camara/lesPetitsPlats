@@ -8,11 +8,13 @@
     position: relative;
     display: flex;
     justify-content: center;
+    margin-bottom: 80px;
+    padding: 0 150px 0 150px;
 }
 
 .inputRecette {
     height: 55px;
-    width: 80%;
+    width: 100%;
     background-color: #E6E6E6FF;
     border: none;
     border-radius: 5px;
@@ -34,30 +36,34 @@
 .searchByCategoriesContainer {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    margin-left: 30px;
+    margin-left: 150px;
 }
 
 .iconArrowSearch {
     height: 30px;
     color: white;
+    transition-duration: 0.3s;
+}
 
+.iconArrowSearchActive {
+    transform: rotate(180deg);
 }
 
 /* search by ingredients */
 .searchByIngredients {
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     max-width: 350px;
     min-width: 200px;
+    height: fit-content;
     overflow: hidden;
     background-color: #3282F7FF;
     border-radius: 5px;
+    position: relative;
+    margin-right: 50px;
 }
 
 .searchByIngredientsTyping {
-    position: relative;
     width: fit-content;
 }
 
@@ -69,11 +75,15 @@
 
 .searchByIngredientsInput {
     background-color: transparent;
+    color: white;
     border: none;
     height: 55px;
-    width: 200px;
     min-width: 200px;
     max-width: 350px;
+}
+
+.searchByIngredientsInput:focus {
+    outline: none;
 }
 
 .searchByIngredientsInput::placeholder {
@@ -91,6 +101,10 @@
     background-color: transparent;
 
 }
+
+.searchByIngredientsResult::-webkit-scrollbar {
+    width: 0;
+  }
 
 .ingredientContainer {
     /* display: flex; */
