@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 80px;
-    padding: 0 150px 0 150px;
+    padding: 0 100px 0 100px;
 }
 
 .inputRecette {
@@ -36,7 +36,7 @@
 .searchByCategoriesContainer {
     display: flex;
     justify-content: flex-start;
-    margin-left: 150px;
+    margin-left: 100px;
 }
 
 .iconArrowSearch {
