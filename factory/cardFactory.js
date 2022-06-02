@@ -28,6 +28,7 @@ const cardCreator = (data) => {
         cardDownSide_down.classList.add('cardDownSide_down');
         cardDownSide_down.appendChild(cardDownSide_down_left);
         cardDownSide_down_left.classList.add('cardDownSide_down_left');
+        cardDownSide_down_right.classList.add('cardDownSide_down_right');
         cardDownSide_down.appendChild(cardDownSide_down_right);
         allCards.appendChild(cardContainer);
 
@@ -47,7 +48,6 @@ const cardCreator = (data) => {
         cardDownSide_up.appendChild(timeRecipe);
 
 
-        console.log(element.ingredients);
         for (const ingredientsFromData of element.ingredients) {
             
             const ingredientsRecipeContainer = document.createElement('div');

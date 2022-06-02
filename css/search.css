@@ -39,7 +39,7 @@
     margin-left: 100px;
 }
 
-.iconArrowSearch {
+.globalIconArrow {
     height: 30px;
     color: white;
     transition-duration: 0.3s;
@@ -53,7 +53,7 @@
 .searchByIngredients {
     display: flex;
     flex-direction: column;
-    max-width: 350px;
+    max-width: 667px;
     min-width: 200px;
     height: fit-content;
     overflow: hidden;
@@ -89,13 +89,14 @@
 .searchByIngredientsInput::placeholder {
     color: white;
     font-weight: 500;
+    margin-left: 100px;
 }
 
 .searchByIngredientsResult {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     max-height: 300px;
+    padding: 0 20px 0 20px;
     overflow: auto;
     min-width: 200px;
     background-color: transparent;
@@ -110,6 +111,92 @@
     /* display: flex; */
     color: white;
     width: 100px;
-    margin: 10px 10px 10px 10px;
+    margin: 10px 110px 10px 10px;
     font-size: 14px;
+}
+
+/* search by APPAREIL */
+.searchByAppareils {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    min-width: 200px;
+    height: fit-content;
+    overflow: hidden;
+    background-color: #68D9A4;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 50px;
+}
+
+.searchByAppareilsTyping {
+    width: fit-content;
+}
+
+.searchByAppareilsInput {
+    background-color: transparent;
+    color: white;
+    border: none;
+    height: 55px;
+    min-width: 200px;
+    max-width: 350px;
+}
+
+.iconAppareilsContainer {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+}
+
+.searchByAppareilsInput {
+    background-color: transparent;
+    color: white;
+    border: none;
+    height: 55px;
+    min-width: 200px;
+    max-width: 350px;
+}
+
+.searchByAppareilsInput:focus {
+    outline: none;
+}
+
+.searchByAppareilsInput::placeholder {
+    color: white;
+    font-weight: 500;
+}
+
+.searchByAppareilsResult {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 300px;
+    overflow: auto;
+    min-width: 200px;
+    background-color: transparent;
+
+}
+
+.searchByAppareilsResult::-webkit-scrollbar {
+    width: 0;
+}
+
+/* search by USTENSILS */
+.searchByUstensiles {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    min-width: 200px;
+    height: fit-content;
+    overflow: hidden;
+    background-color: #ED6454;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 50px;
+}
+
+.iconUstensilesContainer {
+    position: absolute;
+    right: 8px;
+    top: 12px;
 }
