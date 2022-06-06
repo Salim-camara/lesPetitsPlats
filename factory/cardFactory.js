@@ -69,6 +69,7 @@ const cardCreator = (data) => {
 
 
         const descRecipe = document.createElement('p');
+        descRecipe.classList.add('descRecipe');
         descRecipe.innerHTML = element.description;
         cardDownSide_down_right.appendChild(descRecipe);
 
