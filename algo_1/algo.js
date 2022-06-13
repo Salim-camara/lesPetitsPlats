@@ -6,7 +6,12 @@ const algo = async () => {
         console.log(word.innerText);
         const classContainer = word.classList.value.split(' ');
 
-        if(classContainer.includes('appareil')) {
+        if(classContainer.includes('ingredient')) {
+
+            await algoIngredient(word.innerText);
+            console.log(dataForAlgo);
+
+        } else if(classContainer.includes('appareil')) {
             await algoAppareil(word.innerText);
             console.log(dataForAlgo);
         }
