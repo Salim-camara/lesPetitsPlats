@@ -5,6 +5,7 @@ const resultContainer = document.querySelector('.searchByIngredientsResult');
 const resultContainerAppareil = document.querySelector('.searchByAppareilsResult');
 const resultContainerUstensile = document.querySelector('.searchByUstensilesResult');
 const fixWidthIngredientContainer = document.querySelector('.searchByIngredients');
+const fixWidthAppareilContainer = document.querySelector('.searchByAppareils');
 const wordContainer = document.querySelector('.wordContainer');
 
 // allongement du champ
@@ -82,29 +83,6 @@ buttonArrowIngredient.addEventListener('click', () => {
         resultContainer.innerHTML = "";
         fixWidthIngredientContainer.style.width = '170px';
 
-    }
-})
-
-// APPAREIL
-buttonArrowAppareil.addEventListener('click', () => {
-    if (appareilState === false) {
-        console.log('test_false');
-        appareilState = true;
-        arrowAppareil.classList.add('iconArrowSearchActive');
-        resultContainerAppareil.style.width = '350px';
-
-
-        for (const element of recipes) {
-            const newIngredient = document.createElement('p');
-            newIngredient.classList.add('ingredientContainer');
-            newIngredient.innerHTML = element.appliance;
-            resultContainerAppareil.appendChild(newIngredient);
-        }
-    } else {
-        appareilState = false;
-        arrowAppareil.classList.remove('iconArrowSearchActive');
-        resultContainerAppareil.style.width = '200px';
-        resultContainerAppareil.innerHTML = "";
     }
 })
 
