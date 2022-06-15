@@ -64,6 +64,19 @@
 
 }
 
+.selectedUstensileContainer {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    background-color: #ED6454;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 5px;
+
+}
+
 
 /* SEARCH BY CATEGORIES */
 .searchByCategoriesContainer {
@@ -209,18 +222,45 @@
     width: 0;
 }
 
-/* search by USTENSILS */
+
+/* SEARCH USTENSILES */
+
 .searchByUstensiles {
     display: flex;
     flex-direction: column;
-    max-width: 350px;
-    min-width: 200px;
     height: fit-content;
     overflow: hidden;
     background-color: #ED6454;
     border-radius: 5px;
     position: relative;
     margin-right: 50px;
+}
+
+.searchByUstensilesInput {
+    background-color: transparent;
+    color: white;
+    border: none;
+    height: 55px;
+    min-width: 170px;
+}
+
+.searchByUstensilesResult {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 300px;
+    overflow: auto;
+    min-width: 170px;
+    background-color: transparent;
+    
+}
+
+.searchByUstensilesResult::-webkit-scrollbar {
+    width: 0;
+}
+
+.searchByUstensilesInput::placeholder {
+    color: white;
+    font-weight: 500;
 }
 
 .iconUstensilesContainer {

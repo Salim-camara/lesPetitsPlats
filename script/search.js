@@ -5,6 +5,7 @@ const resultContainer = document.querySelector('.searchByIngredientsResult');
 const resultContainerAppareil = document.querySelector('.searchByAppareilsResult');
 const resultContainerUstensile = document.querySelector('.searchByUstensilesResult');
 const fixWidthIngredientContainer = document.querySelector('.searchByIngredients');
+const fixWidthUstensileContainer = document.querySelector('.searchByUstensiles');
 const fixWidthAppareilContainer = document.querySelector('.searchByAppareils');
 const wordContainer = document.querySelector('.wordContainer');
 
@@ -89,29 +90,29 @@ buttonArrowIngredient.addEventListener('click', () => {
 })
 
 // USTENSILE
-buttonArrowUstensile.addEventListener('click', () => {
-    if (ustensileState === false) {
-        ustensileState = true;
-        arrowUstensile.classList.add('iconArrowSearchActive');
-        resultContainerUstensile.style.width = '350px';
+// buttonArrowUstensile.addEventListener('click', () => {
+//     if (ustensileState === false) {
+//         ustensileState = true;
+//         arrowUstensile.classList.add('iconArrowSearchActive');
+//         resultContainerUstensile.style.width = '350px';
 
 
-        for (const element of recipes) {
-            for (const ustensile of element.ustensils) {
-                const newIngredient = document.createElement('p');
-                newIngredient.classList.add('ingredientContainer');
-                newIngredient.innerHTML = ustensile;
-                resultContainerUstensile.appendChild(newIngredient);
-            }
-        }
-    } else {
-        ustensileState = false;
-        arrowUstensile.classList.remove('iconArrowSearchActive');
-        resultContainerUstensile.style.width = '200px';
-        resultContainerUstensile.innerHTML = "";
+//         for (const element of recipes) {
+//             for (const ustensile of element.ustensils) {
+//                 const newIngredient = document.createElement('p');
+//                 newIngredient.classList.add('ingredientContainer');
+//                 newIngredient.innerHTML = ustensile;
+//                 resultContainerUstensile.appendChild(newIngredient);
+//             }
+//         }
+//     } else {
+//         ustensileState = false;
+//         arrowUstensile.classList.remove('iconArrowSearchActive');
+//         resultContainerUstensile.style.width = '200px';
+//         resultContainerUstensile.innerHTML = "";
 
-    }
-})
+//     }
+// })
 
 
 
