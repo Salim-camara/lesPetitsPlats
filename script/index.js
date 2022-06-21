@@ -1,14 +1,13 @@
 const data = recipes;
 
 class CardManager {
-    constructor(data) {
-        this.data = data
+    constructor(dataForAlgo) {
+        this.data = dataForAlgo
     }
 
 
     CardCreate() {
-        cardCreator(this.data)
-        // console.log('test sata ' +this.data)
+        cardCreator(this.data);
     }
 }
 

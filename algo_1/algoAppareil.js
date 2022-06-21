@@ -1,11 +1,18 @@
-const algoAppareil = async (wordInnerText) => {
-    let data = dataForAlgo;
-    let newData = [];
+class AlgoAppareil {
 
-    for(const element of data) {
-        if(element.appliance == wordInnerText) {
-            newData.push(element);
-        }
+    support(type) {
+        return type == 'appareil';
     }
-    dataForAlgo = newData;
+
+    filter(wordInnerText) {
+            let data = dataForAlgo;
+            let newData = [];
+        
+            for(const element of data) {
+                if(element.appliance == wordInnerText) {
+                    newData.push(element);
+                }
+            }
+            dataForAlgo = newData;
+    }
 }

@@ -1,22 +1,26 @@
 let dataForAlgo = recipes;
+let variable = [new AlgoAppareil(), new AlgoIngredient(), new AlgoUstensile()];
 
-const algo = async () => {
+const algo = () => {
     const allWords = document.querySelectorAll('.word');
-    for(const word of allWords) {
-        console.log(word.innerText);
-        const classContainer = word.classList.value.split(' ');
+    if (allWords.length != 0) {
 
-        if(classContainer.includes('ingredient')) {
-
-            await algoIngredient(word.innerText);
-            console.log(dataForAlgo);
-
-        } else if(classContainer.includes('appareil')) {
-            await algoAppareil(word.innerText);
-            console.log(dataForAlgo);
+        for (const word of allWords) {
+            for (const element of variable) {
+                if (element.support(word.dataset.type)) {
+                    element.filter(word.innerText);
+                    document.querySelector('.card').innerHTML = '';
+                    cardCreator(dataForAlgo);
+                }
+            }
         }
+        dataForAlgo = recipes;
+
+    } else {
+        document.querySelector('.card').innerHTML = '';
+        cardCreator(dataForAlgo);
+        console.log('yes');
     }
-    console.log(allWords);
 };
 
 document.querySelector('.searchIcon').addEventListener('click', () => {
@@ -24,5 +28,5 @@ document.querySelector('.searchIcon').addEventListener('click', () => {
     algo();
     setTimeout(() => {
         console.log('setTimeOut ' + dataForAlgo);
-    }, 5000);
+    }, 3000);
 });

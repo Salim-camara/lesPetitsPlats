@@ -17,6 +17,7 @@ buttonArrowAppareil.addEventListener('click', () => {
                 selectedIngredientContainer.classList.add('selectedAppareilContainer');
                 selectedIngredientContainer.classList.add('word');
                 selectedIngredientContainer.classList.add('appareil');
+                selectedIngredientContainer.dataset.type = 'appareil';
                 const selectedIngredientName = document.createElement('p');
                 const selectedIngredientCross = document.createElement('p');
                 selectedIngredientCross.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" style="width: 20px; margin-left: 8px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -27,10 +28,14 @@ buttonArrowAppareil.addEventListener('click', () => {
                 selectedIngredientContainer.appendChild(selectedIngredientName);
                 selectedIngredientContainer.appendChild(selectedIngredientCross);
                 wordContainer.appendChild(selectedIngredientContainer);
+                // lancement de l'algo
+                algo();
 
                 // supression des mots
                 selectedIngredientCross.addEventListener('click', () => {
                     selectedIngredientContainer.remove();
+                    // lancement de l'algo
+                    algo();
                 })
             })
         }
@@ -39,6 +44,10 @@ buttonArrowAppareil.addEventListener('click', () => {
         arrowAppareil.classList.remove('iconArrowSearchActive');
         resultContainerAppareil.style.width = '170px';
         resultContainerAppareil.innerHTML = "";
-        fixWidthAppareilContainer.style.width = '170px'
+        fixWidthAppareilContainer.style.width = '170px';
+        // lancement de l'algo
+        algo();
+        document.querySelector('.card').innerHTML('');
+        cardCreator(dataForAlgo);
     }
 })
