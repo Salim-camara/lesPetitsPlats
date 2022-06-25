@@ -1,32 +1,42 @@
 let dataForAlgo = recipes;
-let variable = [new AlgoAppareil(), new AlgoIngredient(), new AlgoUstensile()];
+let variable = [new AlgoAppareil(), new AlgoIngredient(), new AlgoUstensile(), new AlgoText()];
+const refreshCardDisplay = () => {
+    document.querySelector('.card').innerHTML = '';
+    cardCreator(dataForAlgo);
+}
+const inputSearch = document.querySelector('.inputRecette');
+inputSearch.addEventListener('keyup', () => handleSearch());
 
-const algo = () => {
+
+const handleSearch = () => {
     const allWords = document.querySelectorAll('.word');
-    if (allWords.length != 0) {
+    const allWordsArray = [...allWords];
+    const search = allWordsArray.map((element) => {
+        return {
+            type: element.dataset.type,
+            value: element.innerText
+        }
+    });
+    search.push({
+        type: 'input',
+        value: inputSearch.value
+    });
+    algo(search);
+}
 
-        for (const word of allWords) {
-            for (const element of variable) {
-                if (element.support(word.dataset.type)) {
-                    element.filter(word.innerText);
-                    document.querySelector('.card').innerHTML = '';
-                    cardCreator(dataForAlgo);
-                }
+
+
+const algo = (items) => {
+
+    for (const word of items) {
+        for (const element of variable) {
+            if (element.support(word.type)) {
+                element.filter(word.value);
             }
         }
-        dataForAlgo = recipes;
-
-    } else {
-        document.querySelector('.card').innerHTML = '';
-        cardCreator(dataForAlgo);
-        console.log('yes');
     }
+    refreshCardDisplay();
+    dataForAlgo = recipes;
 };
 
-document.querySelector('.searchIcon').addEventListener('click', () => {
-    console.log('hello');
-    algo();
-    setTimeout(() => {
-        console.log('setTimeOut ' + dataForAlgo);
-    }, 3000);
-});
+algo([{type: 'input', value: 'coco'}]);

@@ -29,13 +29,13 @@ buttonArrowAppareil.addEventListener('click', () => {
                 selectedIngredientContainer.appendChild(selectedIngredientCross);
                 wordContainer.appendChild(selectedIngredientContainer);
                 // lancement de l'algo
-                algo();
+                handleSearch();
 
                 // supression des mots
                 selectedIngredientCross.addEventListener('click', () => {
                     selectedIngredientContainer.remove();
                     // lancement de l'algo
-                    algo();
+                    handleSearch();
                 })
             })
         }
@@ -46,7 +46,7 @@ buttonArrowAppareil.addEventListener('click', () => {
         resultContainerAppareil.innerHTML = "";
         fixWidthAppareilContainer.style.width = '170px';
         // lancement de l'algo
-        algo();
+        handleSearch();
         document.querySelector('.card').innerHTML('');
         cardCreator(dataForAlgo);
     }
