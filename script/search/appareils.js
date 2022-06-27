@@ -1,15 +1,14 @@
 // APPAREIL
-buttonArrowAppareil.addEventListener('click', () => {
-    if (appareilState === false) {
-        appareilState = true;
-        arrowAppareil.classList.add('iconArrowSearchActive');
-        resultContainerAppareil.style.width = '667px';
-        fixWidthAppareilContainer.style.width = '667px';
 
+let dataForFilterAppareil = recipes;
+const wordAppareilGenerator = () => {
 
-        for (const element of recipes) {
+    for (const element of dataForFilterAppareil) {
+        if(!document.querySelector(`[data-namelistappareil="${element.appliance}"]`)) {
             const newIngredient = document.createElement('p');
             newIngredient.classList.add('ingredientContainer');
+            newIngredient.classList.add('appareilFilter');
+            newIngredient.dataset.namelistappareil = element.appliance;
             newIngredient.innerHTML = element.appliance;
             resultContainerAppareil.appendChild(newIngredient);
             newIngredient.addEventListener('click', () => {
@@ -39,15 +38,42 @@ buttonArrowAppareil.addEventListener('click', () => {
                 })
             })
         }
+    }
+};
+
+
+
+buttonArrowAppareil.addEventListener('click', () => {
+    if (appareilState === false) {
+        appareilState = true;
+        arrowAppareil.classList.add('iconArrowSearchActive');
+        resultContainerAppareil.style.width = '667px';
+        fixWidthAppareilContainer.style.width = '667px';
+
+        wordAppareilGenerator();
     } else {
         appareilState = false;
         arrowAppareil.classList.remove('iconArrowSearchActive');
         resultContainerAppareil.style.width = '170px';
         resultContainerAppareil.innerHTML = "";
         fixWidthAppareilContainer.style.width = '170px';
-        // lancement de l'algo
-        handleSearch();
-        document.querySelector('.card').innerHTML('');
-        cardCreator(dataForAlgo);
     }
 })
+
+// recherche dynamique
+inputAppareil.addEventListener('keyup', () => {
+    appareilState = true;
+    arrowAppareil.classList.add('iconArrowSearchActive');
+    resultContainerAppareil.style.width = '667px';
+    fixWidthAppareilContainer.style.width = '667px';
+
+    wordAppareilGenerator();
+    const allAppareilWords = document.querySelectorAll('.appareilFilter');
+    const allAppareilWordsArray = [...allAppareilWords];
+    console.log(allAppareilWordsArray);
+    for (const element of allAppareilWordsArray) {
+        if (element.innerHTML.indexOf(inputAppareil.value) == -1) {
+            document.querySelector(`[data-namelistappareil="${element.innerHTML}"]`).remove();
+        }
+    }
+});

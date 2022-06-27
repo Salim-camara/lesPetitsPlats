@@ -24,8 +24,6 @@ const handleSearch = () => {
     algo(search);
 }
 
-
-
 const algo = (items) => {
 
     for (const word of items) {
@@ -39,4 +37,4 @@ const algo = (items) => {
     dataForAlgo = recipes;
 };
 
-algo([{type: 'input', value: 'coco'}]);
+// algo([{type: 'input', value: 'coco'}]);

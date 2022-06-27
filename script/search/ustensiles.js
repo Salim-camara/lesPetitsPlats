@@ -1,16 +1,15 @@
-buttonArrowUstensile.addEventListener('click', () => {
-    if (ustensileState === false) {
-        ustensileState = true;
-        arrowUstensile.classList.add('iconArrowSearchActive');
-        resultContainerUstensile.style.width = '667px';
-        fixWidthUstensileContainer.style.width = '667px';
+let dataForFilterUstens = recipes
 
+const wordUstensileGenerator = () => {
+    for (const element of dataForFilterUstens) {
+        for (const ustens of element.ustensils) {
+            if (!document.querySelector(`[data-namelistustensiles="${ustens}"]`)) {
 
-        for (const element of recipes) {
-            for (const ustens of element.ustensils) {
                 const newIngredient = document.createElement('p');
                 newIngredient.classList.add('ingredientContainer');
+                newIngredient.classList.add('ustensileFilter');
                 newIngredient.innerHTML = ustens;
+                newIngredient.dataset.namelistustensiles = ustens;
                 resultContainerUstensile.appendChild(newIngredient);
                 newIngredient.addEventListener('click', () => {
                     const selectedIngredientContainer = document.createElement('div');
@@ -29,19 +28,30 @@ buttonArrowUstensile.addEventListener('click', () => {
                     selectedIngredientContainer.appendChild(selectedIngredientCross);
                     wordContainer.appendChild(selectedIngredientContainer);
                     // lancement de l'algo
-                    algo();
+                    handleSearch();
 
                     // supression des mots
                     selectedIngredientCross.addEventListener('click', () => {
                         selectedIngredientContainer.remove();
                         // lancement de l'algo
-                        algo();
+                        handleSearch();
                     })
-
-
                 })
             }
         }
+    }
+}
+
+
+buttonArrowUstensile.addEventListener('click', () => {
+    if (ustensileState === false) {
+        ustensileState = true;
+        arrowUstensile.classList.add('iconArrowSearchActive');
+        resultContainerUstensile.style.width = '667px';
+        fixWidthUstensileContainer.style.width = '667px';
+
+        wordUstensileGenerator();
+
     } else {
         ustensileState = false;
         arrowUstensile.classList.remove('iconArrowSearchActive');
@@ -49,4 +59,23 @@ buttonArrowUstensile.addEventListener('click', () => {
         resultContainerUstensile.innerHTML = "";
         fixWidthUstensileContainer.style.width = '170px'
     }
-})
+});
+
+
+// recherche dynamique
+inputUstensile.addEventListener('keyup', () => {
+    ustensileState = true;
+    arrowUstensile.classList.add('iconArrowSearchActive');
+    resultContainerUstensile.style.width = '667px';
+    fixWidthUstensileContainer.style.width = '667px';
+
+    wordUstensileGenerator();
+    const allUstensileWords = document.querySelectorAll('.ustensileFilter');
+    const allUstensileWordsArray = [...allUstensileWords];
+    console.log(allUstensileWordsArray);
+    for (const element of allUstensileWordsArray) {
+        if (element.innerHTML.indexOf(inputUstensile.value) == -1) {
+            document.querySelector(`[data-namelistustensiles="${element.innerHTML}"]`).remove();
+        }
+    }
+});

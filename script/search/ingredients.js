@@ -9,21 +9,6 @@ const fixWidthUstensileContainer = document.querySelector('.searchByUstensiles')
 const fixWidthAppareilContainer = document.querySelector('.searchByAppareils');
 const wordContainer = document.querySelector('.wordContainer');
 
-// allongement du champ
-input.addEventListener('keydown', (e) => {
-    if (e.code == "Backspace") {
-        input.style.width = ((input.value.length - 1) * 8) + 'px';
-        resultContainer.style.width = ((input.value.length - 1) * 3) + 'ch';
-        console.log(input.style.width + e.code);
-
-    } else {
-        input.style.width = ((input.value.length + 1) * 8) + 'px';
-        resultContainer.style.width = ((input.value.length + 1) * 3) + 'ch';
-        console.log(input.style.width + e.code);
-    }
-});
-
-
 
 // récupération de la data
 let ingredientState = false;
@@ -35,24 +20,20 @@ const buttonArrowUstensile = document.querySelector('.iconUstensilesContainer');
 const arrowIngredient = document.querySelector('.iconArrowSearch');
 const arrowAppareil = document.querySelector('.iconArrowSearchAppareil');
 const arrowUstensile = document.querySelector('.iconArrowSearchUstensile');
-const inputIngredient = document.querySelector('.searchIngredientsInput');
-// const inputAppareil = document.querySelector('.searchAppareil')
+const inputIngredient = document.querySelector('.searchByIngredientsInput');
+
 
 // INGREDIENT
-buttonArrowIngredient.addEventListener('click', () => {
-    if (ingredientState === false) {
-        ingredientState = true;
-        arrowIngredient.classList.add('iconArrowSearchActive');
-        resultContainer.style.width = '667px';
-        fixWidthIngredientContainer.style.width = '667px';
+const wordIngredientGenerator = () => {
+    for (const element of recipes) {
+        for (const ingredient of element.ingredients) {
+            if(!document.querySelector(`[data-namelistingredient="${ingredient.ingredient}"]`)) {
 
-
-
-        for (const element of recipes) {
-            for (const ingredient of element.ingredients) {
                 const newIngredient = document.createElement('p');
                 newIngredient.classList.add('ingredientContainer');
+                newIngredient.classList.add('ingredientFilter');
                 newIngredient.innerHTML = ingredient.ingredient;
+                newIngredient.dataset.namelistingredient = ingredient.ingredient;
                 resultContainer.appendChild(newIngredient);
                 newIngredient.addEventListener('click', () => {
                     const selectedIngredientContainer = document.createElement('div');
@@ -71,18 +52,30 @@ buttonArrowIngredient.addEventListener('click', () => {
                     selectedIngredientContainer.appendChild(selectedIngredientCross);
                     wordContainer.appendChild(selectedIngredientContainer);
                     // lancement de l'algo
-                    algo();
+                    handleSearch();
 
                     // supression des mots
                     selectedIngredientCross.addEventListener('click', () => {
                         selectedIngredientContainer.remove();
-                        algo();
+                        handleSearch();
                     })
 
 
                 })
             }
         }
+    }
+};
+
+
+buttonArrowIngredient.addEventListener('click', () => {
+    if (ingredientState === false) {
+        ingredientState = true;
+        arrowIngredient.classList.add('iconArrowSearchActive');
+        resultContainer.style.width = '667px';
+        fixWidthIngredientContainer.style.width = '667px';
+
+        wordIngredientGenerator();
     } else {
         ingredientState = false;
         arrowIngredient.classList.remove('iconArrowSearchActive');
@@ -91,7 +84,25 @@ buttonArrowIngredient.addEventListener('click', () => {
         fixWidthIngredientContainer.style.width = '170px';
 
     }
-})
+});
+
+
+// recherche dynamique
+inputIngredient.addEventListener('keyup', () => {
+    ingredientState = true;
+    arrowIngredient.classList.add('iconArrowSearchActive');
+    resultContainer.style.width = '667px';
+    fixWidthIngredientContainer.style.width = '667px';
+
+    wordIngredientGenerator();
+    const allIngredientWords = document.querySelectorAll('.ingredientFilter');
+    const allIngredientWordsArray = [...allIngredientWords];
+    for (const element of allIngredientWordsArray) {
+        if (element.innerHTML.indexOf(inputIngredient.value) == -1) {
+            document.querySelector(`[data-namelistingredient="${element.innerHTML}"]`).remove();
+        }
+    }
+});
 
 
 
