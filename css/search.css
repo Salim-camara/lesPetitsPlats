@@ -80,6 +80,7 @@
 /* SEARCH BY CATEGORIES */
 .searchByCategoriesContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     margin-left: 100px;
 }
@@ -107,6 +108,7 @@
     border-radius: 5px;
     position: relative;
     margin-right: 50px;
+    margin-bottom: 20px;
 }
 
 .searchByIngredientsTyping {
@@ -170,6 +172,7 @@
     border-radius: 5px;
     position: relative;
     margin-right: 50px;
+    margin-bottom: 20px;
 }
 
 .searchByAppareilsTyping {
@@ -233,6 +236,7 @@
     border-radius: 5px;
     position: relative;
     margin-right: 50px;
+    margin-bottom: 20px;
 }
 
 .searchByUstensilesInput {
@@ -266,4 +270,34 @@
     position: absolute;
     right: 8px;
     top: 12px;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 959px) {
+    .card {
+        justify-content: center;
+    }   
+}
+
+@media screen and (max-width: 950px) {
+    .searchIcon {
+        right: 18%;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    .searchByCategoriesContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-left: 100px;
+    }
+
+    .searchIcon {
+        right: 25%;
+    }  
 }
