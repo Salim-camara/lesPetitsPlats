@@ -1,7 +1,8 @@
-let dataForFilterUstens = recipes
+let dataForFilterUstens = dataForAlgo
 
 const wordUstensileGenerator = () => {
-    for (const element of dataForFilterUstens) {
+    dataByIdRecup('appareil');
+    for (const element of dataForAlgoFilter) {
         for (const ustens of element.ustensils) {
             if (!document.querySelector(`[data-namelistustensiles="${ustens}"]`)) {
 
@@ -29,12 +30,16 @@ const wordUstensileGenerator = () => {
                     wordContainer.appendChild(selectedIngredientContainer);
                     // lancement de l'algo
                     handleSearch();
+                    resultContainerUstensile.innerHTML = '';
+                    wordUstensileGenerator();
 
                     // supression des mots
                     selectedIngredientCross.addEventListener('click', () => {
                         selectedIngredientContainer.remove();
                         // lancement de l'algo
                         handleSearch();
+                        resultContainerUstensile.innerHTML = '';
+                        wordUstensileGenerator();
                     })
                 })
             }
@@ -45,13 +50,13 @@ const wordUstensileGenerator = () => {
 
 buttonArrowUstensile.addEventListener('click', () => {
     if (ustensileState === false) {
+        resultContainerUstensile.innerHTML = '';
         ustensileState = true;
         arrowUstensile.classList.add('iconArrowSearchActive');
         resultContainerUstensile.style.width = '667px';
         fixWidthUstensileContainer.style.width = '667px';
 
         wordUstensileGenerator();
-
     } else {
         ustensileState = false;
         arrowUstensile.classList.remove('iconArrowSearchActive');
@@ -72,7 +77,6 @@ inputUstensile.addEventListener('keyup', () => {
     wordUstensileGenerator();
     const allUstensileWords = document.querySelectorAll('.ustensileFilter');
     const allUstensileWordsArray = [...allUstensileWords];
-    console.log(allUstensileWordsArray);
     for (const element of allUstensileWordsArray) {
         if (element.innerHTML.indexOf(inputUstensile.value) == -1) {
             document.querySelector(`[data-namelistustensiles="${element.innerHTML}"]`).remove();

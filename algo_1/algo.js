@@ -1,4 +1,3 @@
-let dataForAlgo = recipes;
 let variable = [new AlgoAppareil(), new AlgoIngredient(), new AlgoUstensile(), new AlgoText()];
 const refreshCardDisplay = () => {
     document.querySelector('.card').innerHTML = '';
@@ -25,7 +24,6 @@ const handleSearch = () => {
 }
 
 const algo = (items) => {
-
     for (const word of items) {
         for (const element of variable) {
             if (element.support(word.type)) {
@@ -37,4 +35,8 @@ const algo = (items) => {
     dataForAlgo = recipes;
 };
 
-// algo([{type: 'input', value: 'coco'}]);
+
+
+document.querySelector('.searchIcon').addEventListener('click', () => {
+    resultContainerAppareil.innerHTML = '';
+});

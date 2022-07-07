@@ -1,4 +1,4 @@
-
+let dataForAlgo = recipes;
 
 
 const cardCreator = (data) => {
@@ -31,13 +31,14 @@ const cardCreator = (data) => {
         cardDownSide_down_right.classList.add('cardDownSide_down_right');
         cardDownSide_down.appendChild(cardDownSide_down_right);
         allCards.appendChild(cardContainer);
-
-
-
+        
+        
+        
         // injection de la data dans chaque élément
         const titleRecipe = document.createElement('p');
         titleRecipe.classList.add('titleRecipe');
         titleRecipe.innerHTML = element.name;
+        cardContainer.id = element.id;
         cardDownSide_up.appendChild(titleRecipe);
 
         const timeRecipe = document.createElement('span');
@@ -72,8 +73,5 @@ const cardCreator = (data) => {
         descRecipe.classList.add('descRecipe');
         descRecipe.innerHTML = element.description;
         cardDownSide_down_right.appendChild(descRecipe);
-
     }
-
-
 }

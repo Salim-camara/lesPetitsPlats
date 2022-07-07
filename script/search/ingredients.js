@@ -25,7 +25,8 @@ const inputIngredient = document.querySelector('.searchByIngredientsInput');
 
 // INGREDIENT
 const wordIngredientGenerator = () => {
-    for (const element of recipes) {
+    dataByIdRecup('appareil');
+    for (const element of dataForAlgoFilter) {
         for (const ingredient of element.ingredients) {
             if(!document.querySelector(`[data-namelistingredient="${ingredient.ingredient}"]`)) {
 
@@ -53,11 +54,15 @@ const wordIngredientGenerator = () => {
                     wordContainer.appendChild(selectedIngredientContainer);
                     // lancement de l'algo
                     handleSearch();
+                    resultContainer.innerHTML = '';
+                    wordIngredientGenerator();
 
                     // supression des mots
                     selectedIngredientCross.addEventListener('click', () => {
                         selectedIngredientContainer.remove();
                         handleSearch();
+                        resultContainer.innerHTML = '';
+                        wordIngredientGenerator();
                     })
 
 
@@ -70,6 +75,7 @@ const wordIngredientGenerator = () => {
 
 buttonArrowIngredient.addEventListener('click', () => {
     if (ingredientState === false) {
+        resultContainer.innerHTML = '';
         ingredientState = true;
         arrowIngredient.classList.add('iconArrowSearchActive');
         resultContainer.style.width = '667px';
