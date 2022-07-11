@@ -38,6 +38,10 @@ const wordUstensileGenerator = () => {
                         selectedIngredientContainer.remove();
                         // lancement de l'algo
                         handleSearch();
+                        resultContainerAppareil.innerHTML = '';
+                        if (ustensileState == false) {
+                            resultContainerUstensile.style.height = "0";
+                        }
                         resultContainerUstensile.innerHTML = '';
                         wordUstensileGenerator();
                     })
@@ -52,17 +56,15 @@ buttonArrowUstensile.addEventListener('click', () => {
     if (ustensileState === false) {
         resultContainerUstensile.innerHTML = '';
         ustensileState = true;
+        stateFalseIngredient();
+        stateFalseAppareil();
         arrowUstensile.classList.add('iconArrowSearchActive');
         resultContainerUstensile.style.width = '667px';
         fixWidthUstensileContainer.style.width = '667px';
 
         wordUstensileGenerator();
     } else {
-        ustensileState = false;
-        arrowUstensile.classList.remove('iconArrowSearchActive');
-        resultContainerUstensile.style.width = '170px';
-        resultContainerUstensile.innerHTML = "";
-        fixWidthUstensileContainer.style.width = '170px'
+        stateFalseUstensile();
     }
 });
 
@@ -72,6 +74,7 @@ inputUstensile.addEventListener('keyup', () => {
     ustensileState = true;
     arrowUstensile.classList.add('iconArrowSearchActive');
     resultContainerUstensile.style.width = '667px';
+    resultContainer.style.height = "";
     fixWidthUstensileContainer.style.width = '667px';
 
     wordUstensileGenerator();

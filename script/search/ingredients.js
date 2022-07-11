@@ -23,12 +23,41 @@ const arrowUstensile = document.querySelector('.iconArrowSearchUstensile');
 const inputIngredient = document.querySelector('.searchByIngredientsInput');
 
 
+
+// state false
+const stateFalseUstensile = () => {
+    ustensileState = false;
+    arrowUstensile.classList.remove('iconArrowSearchActive');
+    resultContainerUstensile.style.width = '170px';
+    resultContainerUstensile.innerHTML = "";
+    fixWidthUstensileContainer.style.width = '170px'
+}
+
+const stateFalseIngredient = () => {
+    ingredientState = false;
+    arrowIngredient.classList.remove('iconArrowSearchActive');
+    resultContainer.style.width = '170px';
+    resultContainer.innerHTML = "";
+    fixWidthIngredientContainer.style.width = '170px';
+}
+
+const stateFalseAppareil = () => {
+    appareilState = false;
+    arrowAppareil.classList.remove('iconArrowSearchActive');
+    resultContainerAppareil.style.width = '170px';
+    resultContainerAppareil.innerHTML = "";
+    fixWidthAppareilContainer.style.width = '170px';
+}
+
+
+
+
 // INGREDIENT
 const wordIngredientGenerator = () => {
     dataByIdRecup('appareil');
     for (const element of dataForAlgoFilter) {
         for (const ingredient of element.ingredients) {
-            if(!document.querySelector(`[data-namelistingredient="${ingredient.ingredient}"]`)) {
+            if (!document.querySelector(`[data-namelistingredient="${ingredient.ingredient}"]`)) {
 
                 const newIngredient = document.createElement('p');
                 newIngredient.classList.add('ingredientContainer');
@@ -61,6 +90,10 @@ const wordIngredientGenerator = () => {
                     selectedIngredientCross.addEventListener('click', () => {
                         selectedIngredientContainer.remove();
                         handleSearch();
+                        resultContainerAppareil.innerHTML = '';
+                        if (ingredientState == false) {
+                            resultContainer.style.height = "0";
+                        }
                         resultContainer.innerHTML = '';
                         wordIngredientGenerator();
                     })
@@ -77,18 +110,16 @@ buttonArrowIngredient.addEventListener('click', () => {
     if (ingredientState === false) {
         resultContainer.innerHTML = '';
         ingredientState = true;
+        stateFalseUstensile();
+        stateFalseAppareil();
         arrowIngredient.classList.add('iconArrowSearchActive');
         resultContainer.style.width = '667px';
+        resultContainer.style.height = "";
         fixWidthIngredientContainer.style.width = '667px';
 
         wordIngredientGenerator();
     } else {
-        ingredientState = false;
-        arrowIngredient.classList.remove('iconArrowSearchActive');
-        resultContainer.style.width = '170px';
-        resultContainer.innerHTML = "";
-        fixWidthIngredientContainer.style.width = '170px';
-
+        stateFalseIngredient();
     }
 });
 

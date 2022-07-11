@@ -21,18 +21,6 @@ let dataByIdRecup = (type) => {
                 }
             }
             break;
-
-        case 'ingredient':
-            let arrayForIngre = [];
-            for(const element of recipes) {
-                if(finalArray.includes(element.id.toString())) {
-                    arrayForIngre.push(element.ingredients);
-                }
-            }
-            for(const item of arrayForIngre) {
-                console.log(item);
-            }
-            break;
     }
 
 }
@@ -76,6 +64,9 @@ const wordAppareilGenerator = () => {
                     // lancement de l'algo
                     handleSearch();
                     resultContainerAppareil.innerHTML = '';
+                    if (appareilState == false) {
+                        resultContainerAppareil.style.height = "0";
+                    }
                     wordAppareilGenerator();
                 })
             });
@@ -89,17 +80,17 @@ buttonArrowAppareil.addEventListener('click', () => {
     if (appareilState === false) {
         resultContainerAppareil.innerHTML = '';
         appareilState = true;
+        stateFalseIngredient();
+        stateFalseUstensile();
         arrowAppareil.classList.add('iconArrowSearchActive');
         resultContainerAppareil.style.width = '667px';
         fixWidthAppareilContainer.style.width = '667px';
+        resultContainerAppareil.style.height = "";
+
 
         wordAppareilGenerator();
     } else {
-        appareilState = false;
-        arrowAppareil.classList.remove('iconArrowSearchActive');
-        resultContainerAppareil.style.width = '170px';
-        resultContainerAppareil.innerHTML = "";
-        fixWidthAppareilContainer.style.width = '170px';
+        stateFalseAppareil();
     }
 })
 

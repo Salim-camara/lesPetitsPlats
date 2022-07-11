@@ -17,6 +17,7 @@
     background-color: #E6E6E6FF;
     border: none;
     border-radius: 5px;
+    text-indent: 15px;
 }
 
 .inputRecette::placeholder {
@@ -128,6 +129,7 @@
     height: 55px;
     min-width: 200px;
     max-width: 350px;
+    text-indent: 10px;
 }
 
 .searchByIngredientsInput:focus {
@@ -185,6 +187,7 @@
     border: none;
     height: 55px;
     min-width: 170px;
+    text-indent: 15px;
 }
 
 .iconAppareilsContainer {
@@ -245,6 +248,7 @@
     border: none;
     height: 55px;
     min-width: 170px;
+    text-indent: 15px;
 }
 
 .searchByUstensilesResult {
@@ -275,11 +279,6 @@
 
 /* Responsive */
 
-@media screen and (max-width: 959px) {
-    .card {
-        justify-content: center;
-    }   
-}
 
 @media screen and (max-width: 950px) {
     .searchIcon {
