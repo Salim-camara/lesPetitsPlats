@@ -32,11 +32,8 @@ const algo = (items) => {
         }
     }
     refreshCardDisplay();
+    if(dataForAlgo.length == 0) {
+        document.querySelector('.card').innerHTML = 'Aucun élément trouvé';
+    }
     dataForAlgo = recipes;
 };
-
-
-
-document.querySelector('.searchIcon').addEventListener('click', () => {
-    resultContainerAppareil.innerHTML = '';
-});
