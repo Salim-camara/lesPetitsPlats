@@ -7,12 +7,13 @@ class AlgoAppareil {
     filter(wordInnerText) {
             let data = dataForAlgo;
             let newData = [];
-        
-            for(const element of data) {
+
+            data.map( (element) => {
                 if(element.appliance == wordInnerText) {
                     newData.push(element);
                 }
-            }
+            });
+            
             dataForAlgo = newData;
     }
 }

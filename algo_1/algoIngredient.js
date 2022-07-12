@@ -7,14 +7,14 @@ class AlgoIngredient {
     filter(wordInnerText) {
             let data = dataForAlgo;
             let newData = [];
-        
-            for(const element of data) {
-                for(const ingre of element.ingredients) {
-                    if(ingre.ingredient == wordInnerText) {
+
+            data.map((element) => {
+                element.ingredients.map((item) => {
+                    if(item.ingredient == wordInnerText) {
                         newData.push(element);
                     }
-                }
-            }
+                })
+            });
             dataForAlgo = newData;
     }
 }
