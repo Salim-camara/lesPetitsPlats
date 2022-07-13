@@ -8,14 +8,13 @@ class AlgoUstensile {
         let data = dataForAlgo;
         let newData = [];
 
-        data.map((element) => {
-            element.ustensils.map((item) => {
-                if (item == wordInnerText) {
+        for (const element of data) {
+            for (const usten of element.ustensils) {
+                if (usten == wordInnerText) {
                     newData.push(element);
                 }
-            })
-        });
-
+            }
+        }
         dataForAlgo = newData;
     }
 }

@@ -7,8 +7,6 @@ const inputSearch = document.querySelector('.inputRecette');
 inputSearch.addEventListener('keyup', () => handleSearch());
 
 
-
-
 const handleSearch = () => {
     const allWords = document.querySelectorAll('.word');
     const allWordsArray = [...allWords];
@@ -25,18 +23,14 @@ const handleSearch = () => {
     algo(search);
 }
 
-
-
-
 const algo = (items) => {
-
-    items.map((word) => {
-        variable.map((element) => {
+    for (const word of items) {
+        for (const element of variable) {
             if (element.support(word.type)) {
                 element.filter(word.value);
             }
-        })
-    })
+        }
+    }
     refreshCardDisplay();
     if(dataForAlgo.length == 0) {
         document.querySelector('.card').innerHTML = 'Aucun élément trouvé';

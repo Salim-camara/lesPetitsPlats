@@ -21,5 +21,4 @@ class AlgoText {
                 }
                 dataForAlgo = newData;
             } 
-    
 }}
