@@ -28,6 +28,7 @@ const algo = (items) => {
         for (const element of variable) {
             if (element.support(word.type)) {
                 element.filter(word.value);
+                break;
             }
         }
     }
